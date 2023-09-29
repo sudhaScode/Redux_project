@@ -1,9 +1,9 @@
 import './Counter.css';
 import {useSelector, useDispatch} from 'react-redux';
-import { useState } from 'react';
-//import { Component } from 'react';
+import { counterActions } from '../Store';
+//import { Component } from 'react'; for class component
 
-const Counter =()=>{
+/*const Counter =()=>{
     const dispatch = useDispatch();
     const counter = useSelector(state => state.counter.counter);
     const showCounter = useSelector(state => state.counter.showCounter);
@@ -20,7 +20,26 @@ const Counter =()=>{
     }
     const onToggleHnadler =()=>{
         dispatch({type: 'toggle',})
-    };
+    };*/
+
+    const Counter =()=>{
+        const dispatch = useDispatch();
+        const counter = useSelector(state => state.counter.counter);
+        const showCounter = useSelector(state => state.counter.showCounter);
+    
+        const incrementHandler=()=>{
+              dispatch(counterActions.increment());
+        };
+        const decrementHandler=()=>{
+            dispatch(counterActions.decrement());        
+        };
+    
+        const increaseHandler =()=>{
+            dispatch(counterActions.increase(10));
+        }
+        const onToggleHnadler =()=>{
+            dispatch(counterActions.toggeleCounter())
+        };
 
     return (
         <div className = 'counter'>
